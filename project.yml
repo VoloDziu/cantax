@@ -1,5 +1,8 @@
 parameters: {}
-environment: {}
+environment:
+  OPENAI_API_KEY: ${OPENAI_API_KEY}
+  PINECONE_API_KEY: ${PINECONE_API_KEY}
+  PINECONE_ENV: ${PINECONE_ENV}
 packages:
   - name: openai-pinecone
     shared: false
@@ -14,9 +17,6 @@ packages:
         web: true
         webSecure: false
         parameters: {}
-        environment:
-          OPENAI_API_KEY: ${OPENAI_API_KEY}
-          PINECONE_API_KEY: ${PINECONE_API_KEY}
-          PINECONE_ENV: ${PINECONE_ENV}
+        environment: {}
         annotations: {}
         limits: {}
