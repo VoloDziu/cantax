@@ -19,7 +19,7 @@ def qa(query: str, index_name: str):
         llm=OpenAI(),
         chain_type="stuff",
         retriever=Pinecone.from_existing_index(index_name, embedding).as_retriever(),
-        chain_type_kwargs={"verbose": True},
+        # chain_type_kwargs={"verbose": True},
     )
 
     return qa.run(query)
