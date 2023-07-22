@@ -7,15 +7,12 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone
 
 
-def main(args):
-    index_name = args.get("index_name", "canada-tax")
-    query = args.get("question", "what kinds of taxes exist in canada?")
-
-    embedding = OpenAIEmbeddings(openai_api_key=os.getenv["OPENAI_API_KEY"])
+def qa(query: str, index_name: str):
+    embedding = OpenAIEmbeddings(openai_api_key=os.environ["OPENAI_API_KEY"])
 
     pinecone.init(
-        api_key=os.getenv["PINECONE_API_KEY"],
-        environment=os.getenv["PINECONE_ENV"],
+        api_key=os.environ["PINECONE_API_KEY"],
+        environment=os.environ["PINECONE_ENV"],
     )
 
     qa = RetrievalQA.from_chain_type(
@@ -25,6 +22,12 @@ def main(args):
         chain_type_kwargs={"verbose": True},
     )
 
-    answer = qa.run(query)
+    return qa.run(query)
 
-    return {"question": query, "answer": answer}
+
+if __name__ == "__main__":
+    answer = search(
+        "how many tax brackets are there in canada?",
+        "canada-tax",
+    )
+    print(">>>", answer)
