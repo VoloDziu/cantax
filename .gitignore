@@ -1,8 +1,2 @@
-.nimbella
-.deployed
-__deployer__.zip
-__pycache__/
-node_modules
-package-lock.json
 .env
 .DS_Store
