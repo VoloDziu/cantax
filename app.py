@@ -31,7 +31,3 @@ def qa_route():
 @app.route("/500")
 def err500():
     abort(500)
-
-
-if __name__ == '__main__':
-    
