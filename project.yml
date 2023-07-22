@@ -1,22 +1,22 @@
 parameters: {}
-environment:
-  OPENAI_API_KEY: ${OPENAI_API_KEY}
-  PINECONE_API_KEY: ${PINECONE_API_KEY}
-  PINECONE_ENV: ${PINECONE_ENV}
+environment: {}
 packages:
-  - name: sample
+  - name: openai-pinecone
     shared: false
     environment: {}
     parameters: {}
     annotations: {}
     functions:
-      - name: hello
+      - name: qa
         binary: false
         main: ""
         runtime: python:3.11
         web: true
         webSecure: false
         parameters: {}
-        environment: {}
+        environment:
+          OPENAI_API_KEY: ${OPENAI_API_KEY}
+          PINECONE_API_KEY: ${PINECONE_API_KEY}
+          PINECONE_ENV: ${PINECONE_ENV}
         annotations: {}
         limits: {}
